@@ -13,21 +13,37 @@ public class Headphones {
         return this.serialNumber;
     }
 
-    public void getserialNumber(int serialNumber){
-        this.serialNumber = serialNumber;
+    public String getbrand(){
+        return this.brand;
     }
 
     public float getprice(){
         return this.price;
     }
 
-    public void getprice(int price){
-        this.price = price;
-    }
-
     public boolean getisSold(){
         return this.isSold;
     }
+
+    public void getbrand(String brand){
+        this.brand = brand;
+    }
+
+    public void getserialNumber(int serialNumber){
+        this.serialNumber = serialNumber;
+    }
+
+    public void getprice(float price){
+        this.price = price;
+    }
+
+    public void getisSold(boolean isSold){
+        this.isSold = isSold;
+    }
+
+    
+
+    
 
 
 
