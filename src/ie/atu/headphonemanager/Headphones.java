@@ -8,6 +8,16 @@ public class Headphones {
     private float price;
     private boolean isSold;
 
+    public Headphones(int serialNumber, String brand, float price, boolean isSold){
+        this.serialNumber = serialNumber;
+        this.brand = brand;
+        this.price = price;
+        this.isSold = isSold;
+    }
+
+
+
+
     // getter and Setter Methods
     public int getSerialNumber(){
         return this.serialNumber;
