@@ -13,28 +13,66 @@ public class Main {
       // Create infinite while loop to display Menu after every command
     while (true) {
       // Display Menu to console
-      System.out.println("");
-      System.out.println("###################################");
-      System.out.println("# Headphone Manager v0.1 #");
+      System.out.println("\n###################################");
+      System.out.println("# Headphone Manager v1.0 #");
       System.out.println("###################################");
       System.out.println("(1) Add a Headphone.");
       System.out.println("(2) Delete a Headphone.");
-      System.out.println("(3) Show total number of Headphone.");
-      System.out.println("(4) Search for a Headphone by ID.");
+      System.out.println("(3) Show total number of Headphones.");
+      System.out.println("(4) Search for a Headphone by Model.");
+      System.out.println("(5) List all Headphones.");
       System.out.println("(5) Quit.");
-      System.out.println("Select an option from 1 to 5 and press Enter>");
+      System.out.println("Select an option from 1 to 6 and press Enter>");
 
 
       // Store user Menu option selection
       userSelection = userInput.nextInt();
+      userInput.nextLine(); // Consume newline
 
-      if (userSelection == 5) { // Quit
+      switch (userSelection) {
+        case 1 -> {
+          System.out.print("Enter Brand: ");
+          String brand = userInput.nextLine();
+          System.out.print("Enter Model: ");
+          String model = userInput.nextLine();
+          System.out.print("Enter Price: ");
+          float price = userInput.nextFloat();
+          System.out.print("Is it Wireless (true/false): ");
+          boolean isWireless = userInput.nextBoolean();
+          if (isWireless) {
+            System.out.print("Enter Battery Life (hours):" );
+            int batteryLife = userInput.nextInt();
+            manager.addHeadphones(new WirelessHeadphones(brand, model, price, true, batteryLife));
+          } else {
+            manager.addHeadphones(new Headphones(brand, model, price, false));
 
-         System.out.println("Headphone Application Closing - Goodbye!");
-         // Close the User Input Scanner
-         userInput.close();
-         break; // Break out of display Menu infinite loop 
-      } // and if
-    } // end while
-   } // and main method
-} // end Main class
+          }
+        }
+        case 2 -> {
+          System.out.print("Enter Model to Delete: ");
+          String model = userInput.nextLine();
+          manager.deleteHeadphones(model);
+        
+        }
+        case 3 -> System.out.println("Total Headphones:" + manager.getTotalHeadphones());
+        case 4 -> {
+          System.out.print("Enter Model to Search: ");
+          String model = userInput.nextLine();
+          Headphones h = manager.searchHeadphones(model);
+          System.out.println(h != null ? h : "Headphones not found.");
+        }
+        case 5 -> manager.listHeadphones();
+        case 6 -> {
+          System.out.println("Exiting Headphone Manager. Bye!");
+          userInput.close();
+          return;
+        }
+        default -> System.out.println("Invalid selection. Please try again.");
+            
+          }
+
+          }
+
+        }
+      }
+      
