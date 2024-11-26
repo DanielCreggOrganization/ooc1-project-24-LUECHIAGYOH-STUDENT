@@ -3,49 +3,55 @@ package ie.atu.headphonemanager;
 public class Headphones {
 
     // Instance Variables
-    private int serialNumber; // Unique10
-    private String brand;
+    private String brand; // Unique10
+    private String model;
     private float price;
-    private boolean isSold;
+    private boolean isWireless;
 
-    public Headphones(int serialNumber, String brand, float price, boolean isSold) {
-        this.serialNumber = serialNumber;
+    public Headphones(String brand, String model, float price, boolean isWireless) {
         this.brand = brand;
+        this.model = model;
         this.price = price;
-        this.isSold = isSold;
+        this.isWireless = isWireless;
     }
 
     // getter and Setter Methods
-    public int getSerialNumber() {
-        return this.serialNumber;
+    public String getBrand() {
+        return brand;
     }
 
-    public String getbrand() {
-        return this.brand;
-    }
-
-    public float getprice() {
-        return this.price;
-    }
-
-    public boolean getisSold() {
-        return this.isSold;
-    }
-
-    public void getbrand(String brand) {
+    public void setBrand(String brand) {
         this.brand = brand;
     }
 
-    public void getserialNumber(int serialNumber) {
-        this.serialNumber = serialNumber;
+    public String getModel() {
+        return model;
     }
 
-    public void getprice(float price) {
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    public void getisSold(boolean isSold) {
-        this.isSold = isSold;
+    public boolean isWireless() {
+        return isWireless;
     }
+
+    public void setWireless(boolean wireless) {
+        isWireless = wireless;
+    }
+
+    @Override
+    public String toString() {
+        return "Headphones [Brand=" + brand + ", Model=" + model + ", Price=" + price + ", Wireless=" + isWireless + "]";
+    }
+
 
 }
