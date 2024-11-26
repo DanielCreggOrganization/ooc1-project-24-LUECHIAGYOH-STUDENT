@@ -53,5 +53,13 @@ public class Headphones {
         return "Headphones [Brand=" + brand + ", Model=" + model + ", Price=" + price + ", Wireless=" + isWireless + "]";
     }
 
+    public void add(Headphones headphones) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'add'");
+    }
+
+
+   
+
 
 }
