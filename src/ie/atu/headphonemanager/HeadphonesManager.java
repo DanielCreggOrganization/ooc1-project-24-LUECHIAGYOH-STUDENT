@@ -6,7 +6,7 @@ public class HeadphonesManager {
     private static ArrayList<Headphones> headphones;
     
         public HeadphonesManager() {
-            this.headphones = new ArrayList<>();
+            HeadphonesManager.headphones = new ArrayList<>();
         }
     
         public static void addHeadphones(Headphones headphones) {

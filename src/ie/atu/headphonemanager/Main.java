@@ -3,9 +3,7 @@ package ie.atu.headphonemanager;
 import java.util.Scanner;
 
 public class Main {
-   private static Object manager;
-   
-     public static void main(String[] args) {
+   public static void main(String[] args) {
    
        // Instantiate Scanner class so we can start reading user input
        Scanner userInput = new Scanner(System.in);
@@ -46,9 +44,9 @@ public class Main {
                System.out.print("Enter Battery Life (hours):" );
                int batteryLife = userInput.nextInt();
 
-               manager.addHeadphones(new WirelessHeadphones(brand, model, price, true, batteryLife));
+               HeadphonesManager.addHeadphones(new WirelessHeadphones(brand, model, price, true, batteryLife));
           } else {
-            manager.addHeadphones(new Headphones(brand, model, price, false));
+            HeadphonesManager.addHeadphones(new Headphones(brand, model, price, false));
 
           }
         }
@@ -65,7 +63,7 @@ public class Main {
           Headphones h = manager.searchHeadphones(model);
           System.out.println(h != null ? h : "Headphones not found.");
         }
-        case 5 -> manager.listHeadphones();
+        case 5 -> HeadphonesManager.listHeadphones();
         case 6 -> {
           System.out.println("Exiting Headphone Manager. Bye!");
           userInput.close();
