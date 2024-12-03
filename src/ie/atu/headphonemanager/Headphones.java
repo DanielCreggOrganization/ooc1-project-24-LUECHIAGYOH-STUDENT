@@ -1,9 +1,11 @@
 package ie.atu.headphonemanager;
 
-public class Headphones {
+import java.io.Serializable;
 
-    // Instance Variables
-    private String brand; // Unique10
+public class Headphones implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private int id; // Unique identifier
+    private String brand;
     private String model;
     private float price;
     private boolean isWireless;
@@ -15,7 +17,15 @@ public class Headphones {
         this.isWireless = isWireless;
     }
 
-    // getter and Setter Methods
+    // Getter and setter for id
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getBrand() {
         return brand;
     }
@@ -44,15 +54,18 @@ public class Headphones {
         return isWireless;
     }
 
-    public void setWireless(boolean wireless) {
-        isWireless = wireless;
+    public void setWireless(boolean isWireless) {
+        this.isWireless = isWireless;
     }
 
     @Override
     public String toString() {
-        return "Headphones [Brand=" + brand + ", Model=" + model + ", Price=" + price + ", Wireless=" + isWireless + "]";
+        return "Headphones{" +
+                "ID=" + id +
+                ", Brand='" + brand + '\'' +
+                ", Model='" + model + '\'' +
+                ", Price=" + price +
+                ", Wireless=" + isWireless +
+                '}';
     }
-
-  
-
 }

@@ -1,17 +1,21 @@
 package ie.atu.headphonemanager;
 
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class HeadphonesManager {
-    private static ArrayList<Headphones> headphones;
+    private ArrayList<Headphones> headphones;
+    private static int nextId = 1; // Unique ID counter
 
     public HeadphonesManager() {
-        headphones = new ArrayList<>();
+        this.headphones = new ArrayList<>();
     }
 
-    public static void addHeadphones(Headphones headphone) { // Renamed parameter to "headphone"
-        headphones.add(headphone); // Now correctly adds to the ArrayList
-        System.out.println("Headphones added successfully.");
+    public void addHeadphones(Headphones h) {
+        h.setId(nextId++); // Assign a unique ID
+        headphones.add(h);
+        System.out.println("Headphones added successfully: " + h);
     }
 
     public void deleteHeadphones(String model) {
@@ -32,13 +36,38 @@ public class HeadphonesManager {
         return null;
     }
 
-    public static void listHeadphones() {
+    public void listHeadphones() {
         if (headphones.isEmpty()) {
             System.out.println("No headphones in the list.");
         } else {
             for (Headphones h : headphones) {
                 System.out.println(h);
             }
+        }
+    }
+
+    public void sortHeadphonesByPrice() {
+        headphones.sort(Comparator.comparingDouble(Headphones::getPrice));
+        System.out.println("Headphones sorted by price.");
+        listHeadphones();
+    }
+
+    public void saveToFile() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("headphones.dat"))) {
+            oos.writeObject(headphones);
+            System.out.println("Headphones saved to file.");
+        } catch (IOException e) {
+            System.out.println("Error saving headphones to file: " + e.getMessage());
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public void loadFromFile() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("headphones.dat"))) {
+            headphones = (ArrayList<Headphones>) ois.readObject();
+            System.out.println("Headphones loaded from file.");
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error loading headphones from file: " + e.getMessage());
         }
     }
 }
