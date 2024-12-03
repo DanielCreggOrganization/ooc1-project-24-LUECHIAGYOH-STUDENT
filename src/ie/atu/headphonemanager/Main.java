@@ -35,7 +35,6 @@ public class Main {
                         System.out.print("Enter Model: ");
                         String model = userInput.nextLine();  // Use nextLine() to consume the leftover newline
 
-                    
                         // Accept price as a string to handle currency symbols
                         System.out.print("Enter Price (e.g., 100): ");
                         String priceInput = userInput.nextLine();  // Read input as String
@@ -47,44 +46,53 @@ public class Main {
                             System.out.println("Invalid price entered. Please try again.");
                             break;
                         }
-                        
-                    
+
                         System.out.print("Is it Wireless (true/false): ");
                         boolean isWireless = userInput.nextBoolean();
                         userInput.nextLine(); // Clear the buffer after nextBoolean
-                    
+
                         if (isWireless) {
                             System.out.print("Enter Battery Life (hours): ");
                             int batteryLife = userInput.nextInt();
                             userInput.nextLine(); // Clear the buffer after nextInt
-                            manager.addHeadphones(new WirelessHeadphones(brand, model, price, true, batteryLife));
+                            WirelessHeadphones newHeadphone = new WirelessHeadphones(brand, model, price, true, batteryLife);
+                            manager.addHeadphones(newHeadphone);
                         } else {
-                            manager.addHeadphones(new Headphones(brand, model, price, false));
+                            Headphones newHeadphone = new Headphones(brand, model, price, false);
+                            manager.addHeadphones(newHeadphone);
                         }
                         System.out.println("Headphone added successfully.");
                     }
-                    
+
                     case 2 -> {
                         System.out.print("Enter Model to Delete: ");
                         String model = userInput.nextLine();
                         manager.deleteHeadphones(model);
                     }
+
                     case 3 -> System.out.println("Total Headphones: " + manager.getTotalHeadphones());
+
                     case 4 -> {
                         System.out.print("Enter Model to Search: ");
                         String model = userInput.nextLine();
                         Headphones h = manager.searchHeadphones(model);
                         System.out.println(h != null ? h : "Headphones not found.");
                     }
+
                     case 5 -> manager.listHeadphones();
-                    case 6 -> manager.sortHeadphonesByPrice();
+
+                    case 6 -> manager.sortHeadphonesByPrice();  // Sort by price
+
                     case 7 -> manager.saveToFile();
+
                     case 8 -> manager.loadFromFile();
+
                     case 9 -> {
                         System.out.println("Exiting Headphone Manager. Bye!");
                         userInput.close();
                         return;
                     }
+
                     default -> System.out.println("Invalid selection. Please try again.");
                 }
             } catch (Exception e) {

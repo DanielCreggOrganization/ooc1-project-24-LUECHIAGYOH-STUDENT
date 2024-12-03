@@ -4,13 +4,17 @@ import java.io.Serializable;
 
 public class Headphones implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    private static int idCounter = 1; // Static counter to generate unique IDs
     private int id; // Unique identifier
     private String brand;
     private String model;
     private float price;
     private boolean isWireless;
 
+    // Constructor
     public Headphones(String brand, String model, float price, boolean isWireless) {
+        this.id = idCounter++;  // Assign unique ID and increment the counter
         this.brand = brand;
         this.model = model;
         this.price = price;
