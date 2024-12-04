@@ -2,6 +2,8 @@ package ie.atu.headphonemanager;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Comparator;
 
 public class HeadphonesManager {
@@ -11,9 +13,20 @@ public class HeadphonesManager {
         this.headphones = new ArrayList<>();
     }
 
+    // Method to get headphones data as key-value pairs for YAML parsing
+    public Map<String, String> getHeadphonesData() {
+        Map<String, String> data = new HashMap<>();
+        for (Headphones h : headphones) {
+            // Store model as key and other data as value
+            data.put("Model: " + h.getModel(),
+                      "Brand: " + h.getBrand() + ", Price: " + h.getPrice() + ", Wireless: " + h.isWireless());
+        }
+        return data;
+    }
+
     // Add headphones to the list
     public void addHeadphones(Headphones h) {
-        headphones.add(h); // ID is assigned automatically when the object is created
+        headphones.add(h);
         System.out.println("Headphones added successfully: " + h);
     }
 
@@ -79,6 +92,29 @@ public class HeadphonesManager {
             }
         } else {
             System.out.println("No saved headphones file found.");
+        }
+    }
+
+    // Set maximum array size for the headphones list
+    public void setMaxSize(int size) {
+        if (size > 0) {
+            if (headphones.size() > size) {
+                headphones.subList(size, headphones.size()).clear(); // Truncate to the new size
+            }
+            System.out.println("Headphones list size set to: " + size);
+        } else {
+            System.out.println("Invalid size. Size must be greater than 0.");
+        }
+    }
+
+    // List headphones by ID
+    public void listHeadphonesById() {
+        if (headphones.isEmpty()) {
+            System.out.println("No headphones in the list.");
+        } else {
+            for (Headphones h : headphones) {
+                System.out.println("ID: " + h.getId() + " - " + h);
+            }
         }
     }
 }

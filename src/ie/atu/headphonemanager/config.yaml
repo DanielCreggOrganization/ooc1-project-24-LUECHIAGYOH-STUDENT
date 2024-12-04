@@ -1,0 +1,6 @@
+appName: HeadphoneManager
+version: 1.2
+maxHeadphones: 50
+admin:
+  name: Admin
+  email: admin@example.com
