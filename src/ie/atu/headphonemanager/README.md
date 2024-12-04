@@ -1,58 +1,29 @@
-# Headphone Manager Application
+# Headphone Manager
 
-## Overview
-The Headphone Manager application allows users to manage a collection of headphones. Users can add, delete, search, and sort headphones while also saving and loading data from a file.
-
----
+Headphone Manager is a simple Java application for managing a collection of headphones. It allows you to add, delete, search, sort, and manage the data. It also features loading and saving data from a file and configuration using YAML.
 
 ## Features
-1. **Add Headphones**
-   - Add both wired and wireless headphones.
-   - Wireless headphones include an additional "battery life" attribute.
+- Add, delete, and list headphones.
+- Sort headphones by price.
+- Set a maximum size for the headphone list.
+- Save and load headphone data from a file.
+- Uses a YAML configuration file to manage app settings.
 
-2. **Delete Headphones**
-   - Remove a headphone entry based on its model.
+## How to Run
 
-3. **Search for a Headphone**
-   - Search for headphones by their model.
+1. Clone the repository: `git clone https://github.com/DanielCreggOrganization/ooc1-project-24-LUECHIAGYOH-STUDENT.git`
+2. Navigate to the project folder: `cd headphone-manager`
+3. Compile and run the Java application.
+4. Edit `config.yaml` to set your preferred configuration (e.g., maximum number of headphones).
 
-4. **Sort by Price**
-   - Sort headphones from the lowest to highest price.
+## Configuration
 
-5. **List All Headphones**
-   - Display all stored headphones.
+The configuration is stored in `config.yaml`:
 
-6. **Set Maximum Array Size**
-   - Limit the number of headphones stored in the application.
-
-7. **List Headphones by ID**
-   - Sort and display headphones based on their unique ID.
-
-8. **Save and Load**
-   - Save the headphone list to a file.
-   - Load the headphone list from a previously saved file.
-
----
-
-## How to Use
-1. **Run the application** using the provided executable JAR file.
-2. **Follow the menu** to interact with the program.
-
----
-
-## Advanced Features
-- **Set Array Size**: Users can limit the size of the headphone list.
-- **Unique ID Management**: Each headphone has a unique ID, which can be used for sorting.
-- **Error Handling**: Input errors and data corruption are handled gracefully.
-
----
-
-## Demo
-![Application Demo](demo.gif)
-
----
-
-## Setup Instructions
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
+```yaml
+appName: HeadphoneManager
+version: 1.2
+maxHeadphones: 50
+admin:
+  name: Luechia
+  email: G00416981@atu.ie
